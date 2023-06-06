@@ -9,5 +9,5 @@ Simple application for showing some crypto prices with live streaming ability
 This project is a simple crypto application.
 
 - streaming
-- syncfusion charts
+- charts
 - ui
