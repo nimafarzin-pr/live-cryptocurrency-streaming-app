@@ -3,10 +3,6 @@ import 'package:live_cryptocurrency_streaming_app/view/widgets/loading_container
 
 import '../main.dart';
 import 'graph_list.dart';
-// import 'package:live_cryptocurrency_streaming_app/features/liveCoinData/presentation/graph_list.dart';
-// import 'package:live_cryptocurrency_streaming_app/features/liveCoinData/presentation/widgets/loading_container.dart';
-
-// import '../../../injector.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -14,18 +10,13 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.black,
         title: const Text(
-          "Live cryptocurrency",
-          style: TextStyle(fontSize: 16, color: Colors.white),
-        ),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1.0),
-          child: Container(
-            color: Colors.white,
-            height: 1.0,
-          ),
+          "Live Cryptocurrency Price",
+          style: TextStyle(
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
       body: FutureBuilder(

@@ -2,24 +2,23 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:live_cryptocurrency_streaming_app/model/coin.dart';
-// import 'package:live_cryptocurrency_streaming_app/features/liveCoinData/presentation/provider/coin_provider.dart';
+import 'package:live_cryptocurrency_streaming_app/view/widgets/custom_text.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-// import '../../data/model/coin.dart';
 import 'package:intl/intl.dart' as intl;
 
 import '../../provider/coin_provider.dart';
 
-class CoinGraphItem extends StatefulWidget {
+class CoinGraph extends StatefulWidget {
   final CoinUpdates coinUpdates;
 
-  const CoinGraphItem({super.key, required this.coinUpdates});
+  const CoinGraph({super.key, required this.coinUpdates});
 
   @override
-  State<CoinGraphItem> createState() => _CoinGraphItemState();
+  State<CoinGraph> createState() => _CoinGraphState();
 }
 
-class _CoinGraphItemState extends State<CoinGraphItem> {
+class _CoinGraphState extends State<CoinGraph> {
   Queue<Coin> queue = Queue();
   String coinName = '';
 
@@ -53,26 +52,30 @@ class _CoinGraphItemState extends State<CoinGraphItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(15),
-      height: 300,
+      padding: const EdgeInsets.all(14),
+      // height: 500,
       decoration: BoxDecoration(
-          color: const Color(0xffEDEDED).withOpacity(0.05),
-          borderRadius: BorderRadius.circular(8.0)),
+        // color: Colors.black,
+        borderRadius: BorderRadius.circular(8.0),
+      ),
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),
         child: queue.isEmpty
-            ? Center(
-                key: UniqueKey(),
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircularProgressIndicator(),
-                    SizedBox(
-                      height: 24,
-                    ),
-                    Text('Waiting for coin data...')
-                  ],
+            ? Material(
+                color: Colors.transparent,
+                child: Center(
+                  key: UniqueKey(),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      CustomText(text: 'Waiting for coin data...')
+                    ],
+                  ),
                 ),
               )
             : Card(
@@ -81,10 +84,13 @@ class _CoinGraphItemState extends State<CoinGraphItem> {
                   key: ValueKey(coinName),
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         widget.coinUpdates.name,
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
                       ),
                     ),
                     Row(
@@ -99,7 +105,7 @@ class _CoinGraphItemState extends State<CoinGraphItem> {
                               key: ValueKey(widget.coinUpdates.coin?.price),
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 20,
+                                fontSize: 16,
                               ),
                             ),
                           ),
@@ -109,6 +115,7 @@ class _CoinGraphItemState extends State<CoinGraphItem> {
                     const SizedBox(height: 20),
                     Expanded(
                       child: SfCartesianChart(
+                        borderColor: Colors.red,
                         enableAxisAnimation: true,
                         primaryXAxis: DateTimeAxis(
                           dateFormat: intl.DateFormat.Hms(),

@@ -5,9 +5,10 @@ class LoadingContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return Container(
+      color: Colors.black,
       width: double.infinity,
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

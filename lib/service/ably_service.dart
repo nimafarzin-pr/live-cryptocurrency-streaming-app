@@ -14,8 +14,20 @@ const List<Map> _coinTypes = [
     "code": "eth",
   },
   {
-    "name": "Ripple",
-    "code": "xrp",
+    "name": "Bitcoin",
+    "code": "btc",
+  },
+  {
+    "name": "Ethereum",
+    "code": "eth",
+  },
+  {
+    "name": "Bitcoin",
+    "code": "btc",
+  },
+  {
+    "name": "Ethereum",
+    "code": "eth",
   },
 ];
 

@@ -39,6 +39,7 @@ dependencies:
   syncfusion_flutter_charts: ^21.2.8
   intl: ^0.18.1
   provider: ^6.0.5
+  chart_sparkline: ^1.0.13
 
 dev_dependencies:
   flutter_test:

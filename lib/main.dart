@@ -15,7 +15,7 @@ void main() {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const DashboardPage(),
+      home: const SafeArea(child: DashboardPage()),
     ),
   );
 }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:live_cryptocurrency_streaming_app/main.dart';
+import 'package:live_cryptocurrency_streaming_app/view/widgets/coin_list_item.dart';
 import 'package:live_cryptocurrency_streaming_app/view/widgets/loading_container.dart';
 
 import 'package:ably_flutter/ably_flutter.dart' as ably;
 
 import '../provider/coin_provider.dart';
 import '../service/ably_service.dart';
-import 'widgets/coin_graph_item.dart';
+import 'widgets/coin_graph.dart';
 
 class GraphList extends StatefulWidget {
   const GraphList({super.key});
@@ -38,7 +39,16 @@ class _GraphListState extends State<GraphList> {
             child: Column(
               children: [
                 for (CoinUpdates update in prices)
-                  CoinGraphItem(coinUpdates: update),
+                  CoinListItem(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return CoinGraph(coinUpdates: update);
+                        },
+                      ));
+                    },
+                    coinUpdates: update,
+                  ),
               ],
 
               // see section below
